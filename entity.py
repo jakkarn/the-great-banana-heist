@@ -1,7 +1,4 @@
-
-
 from turtle import position
-
 
 class Entity:
     def __init__(self, position):
@@ -37,6 +34,5 @@ class Entity:
 
         for banana_peel in game_data.get_banana_peels():
             if banana_peel.position == self.position:
-                print("SLIP!")
                 self.is_slipping = True
                 game_data.remove_entity(banana_peel)
