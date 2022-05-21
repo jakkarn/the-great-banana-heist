@@ -56,6 +56,16 @@ def print_array(array_inst:Array, x_range:int, y_range:int):
             row += array_inst.tile_inst_dict[(x_value, y_value)].static_obj + " "
         print(row)
 
+def create_map_interactive():
+    map_str = ""
+    inp = input("Str>>")
+    while inp != "q":
+        map_str += inp + "\n"
+        inp = input("Str>>")
+    map_str = map_str[0: len(map_str) - 1]
+    print(map_str)
+
+
 if __name__ == "__main__":
     array_list = [[(1,1), "wall"], [(2,1), "wall"], [(3,1), "wall"], [(4,1), "wall"], [(1,2), "dirt"], [(2,2), "grass"]\
         , [(3,2), "grass"], [(4,2), "wall"], [(1,3), "dirt"], [(2,3), "grass"], [(3,3), "water"], [(4,3), "wall"]\
@@ -65,7 +75,7 @@ if __name__ == "__main__":
     text2 = "ddffd\nggffw\nggffw\nvv  w\nvvwww"
 
     test_text1 = "wwwwwwfwww\nwffffffffw\nwfwwfffvfw\nwffffwwffw\nwffwfwfffw\nwffwfwfvfw\nwfvffffffw\nwfvfwwwffw\nwffffffffw\nwwwwwwwwww"
-
+    lvl1 = "wwwwwwwwwwfw\nwffffffffffw\nwffffffffffw\nwffffffffffw\nwffwwwwwwwww\nwffffffffffw\nwffffffffffw\nwvvvvvwwwffw\nwvvvvvwwwffw\nwffffffffffw\nwffffffffffw\nwwwwwwwwwwww"
 
 
     array_info = convert_text_to_array_list(text, symbol_dict)
@@ -74,5 +84,10 @@ if __name__ == "__main__":
     array2 = Array(array_info2)
     array_info3 = convert_text_to_array_list(test_text1, symbol_dict)
     array3 = Array(array_info3)
-    print(array_info3)
-    print_array(array3, 10, 10)
+    #print(array_info3)
+    #print_array(array3, 10, 10)
+    array_info4 = convert_text_to_array_list(lvl1, symbol_dict)
+    array4 = Array(array_info4)
+    print_array(array4, 12, 12)
+    #create_map_interactive()
+
