@@ -1,6 +1,6 @@
 import pygame
 
-TILE_SIZE = 32
+TILE_SIZE = 64
 
 BANANA_YELLOW = (255, 255, 0)
 PLAYER_BLUE = (0, 0, 255)
