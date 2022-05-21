@@ -14,6 +14,5 @@ def draw_tile(pos, tile_type):
     draw_image(image, draw_pos)
 
 def draw_image(image, pos):
-    print(pos)
     image = pygame.transform.scale(image, (TILE_SIZE, TILE_SIZE))
     SCREEN.blit(image, (pos[0]*TILE_SIZE, pos[1]*TILE_SIZE))

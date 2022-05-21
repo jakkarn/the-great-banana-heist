@@ -6,7 +6,6 @@ BANANA_YELLOW = (255, 255, 0)
 PLAYER_BLUE = (0, 0, 255)
 MIDNIGHT_BLACK = (0, 0, 4)
 
-
 SCREEN_BACKGROUND_COLOR = MIDNIGHT_BLACK
 
 SYMBOL_DICT = {"w":"wall", "g":"grass", "d":"dirt", "v":"water", "f":"floor", " ":"space"}

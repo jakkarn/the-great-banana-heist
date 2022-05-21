@@ -10,13 +10,13 @@ class GameLoop():
         self.grid = grid
 
     def add_entity(self, entity):
-
         self.entities += [entity]
 
     def update(self):
         game_data = GameData()
         game_data.events = pygame.event.get()
         game_data.grid = self.grid
+        game_data.entities = self.entities
 
         for event in game_data.events:
             if event.type == pygame.QUIT:

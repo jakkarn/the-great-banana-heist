@@ -1,4 +1,5 @@
 import pygame
+from banana_peel import BananaPeel
 from constants import IMAGE_MONKEY, PLAYER_BLUE, TILE_SIZE
 from draw_utils import draw_circle, draw_image
 from entity import Entity
@@ -9,6 +10,7 @@ class Player(Entity):
         super().__init__(position)
 
     def update(self, game_data):
+        self.eat_banana(game_data)
         self.update_movement(game_data)
 
     def draw(self):
@@ -28,6 +30,15 @@ class Player(Entity):
                     self.move((0, -1), game_data)
                 if event.key == pygame.K_DOWN:
                     self.move((0, 1), game_data)
+
+    def eat_banana(self, game_data):
+        for event in game_data.events:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+
+                # TODO: not duplicate banana peels
+
+                game_data.entities += [BananaPeel(self.position)]
+
 
     #def banana_action_pressed():
     #    for event in pygame.event.get():
