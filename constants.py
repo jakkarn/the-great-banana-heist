@@ -8,8 +8,9 @@ MIDNIGHT_BLACK = (0, 0, 4)
 
 SCREEN_BACKGROUND_COLOR = MIDNIGHT_BLACK
 
-SYMBOL_DICT = {"w":"wall", "g":"grass", "d":"dirt", "v":"water", "f":"floor", " ":"space"}
+SYMBOL_DICT = {"w":"wall", "g":"grass", "d":"dirt", "v":"water", "f":"floor", " ":"space", "E":"exit"}
 NON_WALKABLE = ["wall"]
+WINNABLE = ["exit"]
 
 IMAGE_MONKEY = pygame.image.load("textures/monkeysprite.png")
 IMAGE_WALL = pygame.image.load("textures/redbrickwall.png")

@@ -1,6 +1,6 @@
 
 
-from turtle import position
+#from turtle import position
 
 
 class Entity:
