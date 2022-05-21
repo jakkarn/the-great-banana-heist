@@ -4,19 +4,19 @@ from game_data import GameData
 from view_port import SCREEN
 
 class GameLoop():
-    def __init__(self):
+    def __init__(self, grid):
         self.running = True
         self.entities = []
+        self.grid = grid
 
     def add_entity(self, entity):
-
-        # TODO: use grid's tiles to get all the entities instead
 
         self.entities += [entity]
 
     def update(self):
         game_data = GameData()
         game_data.events = pygame.event.get()
+        game_data.grid = self.grid
 
         for event in game_data.events:
             if event.type == pygame.QUIT:
@@ -28,7 +28,7 @@ class GameLoop():
             return False
 
         self.update_entities(game_data)
-        self.draw_entities()
+        self.draw_entities(game_data)
 
         return True
 
@@ -37,9 +37,11 @@ class GameLoop():
             if hasattr(entity, "update"):
                 entity.update(game_data)
 
-    def draw_entities(self):
+    def draw_entities(self, game_data):
 
         SCREEN.fill(SCREEN_BACKGROUND_COLOR)
+
+        game_data.grid.draw()
 
         for entity in self.entities:
             if hasattr(entity, "draw"):
