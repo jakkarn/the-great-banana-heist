@@ -12,6 +12,7 @@ class Player(Entity):
         self.banana_count = 0
 
     def update(self, game_data):
+        self.check_if_winning(game_data)
         self.eat_banana(game_data)
         self.update_movement(game_data)
 
@@ -38,6 +39,9 @@ class Player(Entity):
 
                 game_data.entities += [BananaPeel(self.position)]
 
+    def check_if_winning(self, game_data):
+        if game_data.grid.is_winningtile(self.position):
+            print("you win!")
 
     #def banana_action_pressed():
     #    for event in pygame.event.get():
