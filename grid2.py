@@ -21,7 +21,6 @@ class Array(object):
             return False
 
         tile_type = self.tile_inst_dict[new_position].tile_type
-        print("tile type:", tile_type)
 
         if tile_type in NON_WALKABLE:
             return False

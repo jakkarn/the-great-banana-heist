@@ -18,18 +18,17 @@ class Player(Entity):
 
     def update_movement(self, game_data):
 
-        # TODO: cooldown
-
+        super().update(game_data)
         for event in game_data.events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    self.move((-1, 0), game_data)
+                    self.walk((-1, 0), game_data)
                 if event.key == pygame.K_RIGHT:
-                    self.move((1, 0), game_data)
+                    self.walk((1, 0), game_data)
                 if event.key == pygame.K_UP:
-                    self.move((0, -1), game_data)
+                    self.walk((0, -1), game_data)
                 if event.key == pygame.K_DOWN:
-                    self.move((0, 1), game_data)
+                    self.walk((0, 1), game_data)
 
     def eat_banana(self, game_data):
         for event in game_data.events:

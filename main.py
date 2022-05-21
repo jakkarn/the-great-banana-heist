@@ -4,12 +4,12 @@ from player import Player
 
 def run():
 
-    map_design = "ddffd\nggffw\nggffw\nvv  w\nvvwww"
+    map_design = "wwwwwwwwwwfw\nwffffffffffw\nwffffffffffw\nwffffffffffw\nwffwwwwwwwww\nwffffffffffw\nwffffffffffw\nwvvvvvwwwffw\nwvvvvvwwwffw\nwffffffffffw\nwffffffffffw\nwwwwwwwwwwww"
     tiles = convert_text_to_array_list(map_design)
     grid = Array(tiles)
 
     game_loop = GameLoop(grid)
-    player = Player((1,1))
+    player = Player((2,2))
     game_loop.add_entity(player)
 
     while game_loop.update():
