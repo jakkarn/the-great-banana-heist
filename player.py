@@ -1,6 +1,6 @@
 import pygame
 from constants import IMAGE_MONKEY, PLAYER_BLUE, TILE_SIZE
-from draw_utils import draw_circle
+from draw_utils import draw_circle, draw_image
 from entity import Entity
 from view_port import SCREEN
 
@@ -12,7 +12,7 @@ class Player(Entity):
         self.update_movement(game_data)
 
     def draw(self):
-        SCREEN.blit(IMAGE_MONKEY, self.position * TILE_SIZE)
+        draw_image(IMAGE_MONKEY, self.position)
 
     def update_movement(self, game_data):
 
