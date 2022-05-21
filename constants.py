@@ -27,3 +27,5 @@ TILE_TEXTURE_MAP = {
     "space":IMAGE_FLOOR,
     "dirt":IMAGE_FLOOR,
 }
+
+PLAYER_MAX_ENERGY = 5
