@@ -1,7 +1,7 @@
 
 import sys
 
-from constants import NON_WALKABLE, SYMBOL_DICT
+from constants import NON_WALKABLE, SYMBOL_DICT, WINNABLE
 from draw_utils import draw_tile
 
 class Array(object):
@@ -27,6 +27,14 @@ class Array(object):
 
         # TODO: if guard or other cases
         return True
+
+    def is_winningtile(self, new_position):
+        if not new_position in self.tile_inst_dict:
+            return False
+        tile_type = self.tile_inst_dict[new_position].tile_type
+        if tile_type in WINNABLE:
+            return True
+        return False
 
     def draw(self):
         for key, tile in self.tile_inst_dict.items():

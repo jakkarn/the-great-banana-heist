@@ -21,6 +21,7 @@ SYMBOL_DICT = {
     "@":"player"
 }
 NON_WALKABLE = ["wall"]
+WINNABLE = ["exit"]
 
 IMAGE_MONKEY = pygame.image.load("textures/monkeysprite.png")
 IMAGE_WALL = pygame.image.load("textures/redbrickwall.png")
@@ -29,6 +30,7 @@ IMAGE_WATER = pygame.image.load("textures/water.gif")
 IMAGE_FLOOR = pygame.image.load("textures/stone.png")
 IMAGE_BANANAPEEL = pygame.image.load("textures/peel.png")
 IMAGE_BANANA = pygame.image.load("textures/banana.png")
+IMAGE_EXIT = pygame.image.load("textures/red-brick-exit.png")
 
 TILE_TEXTURE_MAP = {
     "wall":IMAGE_WALL,
@@ -37,4 +39,7 @@ TILE_TEXTURE_MAP = {
     "water":IMAGE_WATER,
     "space":IMAGE_FLOOR,
     "dirt":IMAGE_FLOOR,
+    "exit":IMAGE_EXIT,
 }
+
+PLAYER_MAX_ENERGY = 5
