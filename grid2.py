@@ -4,16 +4,38 @@ import sys
 from constants import NON_WALKABLE, SYMBOL_DICT, WINNABLE, DEADLY
 from draw_utils import draw_tile
 
+class LockedExit:
+    def __init__(self, pos):
+        self.ispowered = False
+        self.pos = pos
+    def update(self, game_data):
+        exit_tile = game_data.grid.tile_inst_dict[self.pos]
+        if self.ispowered == False:
+            exit_tile.tile_type = "unlockedexit"
+            self.ispowered = True
+        #else:
+        #    exit_tile.tile_type = "unlockedexit"
+        #    self.ispowered = False
+        
+
 class Array(object):
     """Array is the map"""
 
     def __init__(self, tile_list:list):
         # tile_list == [[coordinate, tile_type] ... ]
         self.tile_inst_dict = {}
+        self.lockedexit = None
         for tile in tile_list:
             pos = tile[0]
             tile_type = tile[1]
             self.tile_inst_dict[pos] = Tile(tile_type)
+            if tile_type == "lockedexit":
+                self.lockedexit = LockedExit(pos) 
+
+    def update(self, game_data):
+        if self.lockedexit != None:
+            self.lockedexit.update(game_data)
+
 
     def is_walkable(self, new_position):
 
