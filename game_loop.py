@@ -1,5 +1,4 @@
 import pygame
-from yaml import load
 from constants import SCREEN_BACKGROUND_COLOR
 from game_data import GameData
 from level_loader import load_level
