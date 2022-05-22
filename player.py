@@ -3,6 +3,7 @@ from banana_peel import BananaPeel
 from constants import IMAGE_BANANA, IMAGE_MONKEY, PLAYER_BLUE, TILE_SIZE, PLAYER_MAX_ENERGY, PLAYER_START_BANANA_COUNT
 from draw_utils import draw_circle, draw_death, draw_font, draw_image
 from entity import Entity
+from guard import Guard
 from view_port import SCREEN
 from timer import Timer
 
@@ -20,6 +21,7 @@ class Player(Entity):
             return
 
         self.check_if_winning(game_data)
+        self.check_if_guard(game_data)
         self.eat_banana_action(game_data)
         self.update_movement(game_data)
         self.pick_up_banana(game_data)
@@ -80,6 +82,11 @@ class Player(Entity):
     def check_if_winning(self, game_data):
         if game_data.grid.is_winningtile(self.position):
             game_data.has_won = True
+
+    def check_if_guard(self, game_data):
+        for entity in game_data.entities:
+            if entity.position == self.position and isinstance(entity, Guard):
+                self.alive = False
 
     def eat_banana(self, game_data):
         self.banana_count -= 1
