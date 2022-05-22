@@ -54,7 +54,7 @@ class Guard(Entity):
 
         if not self.move_timer:
             walked = self.walk(self.find_movement(),game_data)
-        #self.walk(self.find_movement(),game_data)
+        self.walk(self.find_movement(),game_data)
 
         if walked:
             self.move_timer = 0.5

@@ -46,8 +46,6 @@ def load_level(filename):
     if player:
         entities = [player] + entities
 
-    print(entities)
-
     grid = Array(tiles)
 
     return grid, entities

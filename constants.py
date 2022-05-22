@@ -19,14 +19,15 @@ SYMBOL_DICT = {
     "E":"exit",
     "$":"banana",
     "@":"player",
+    "p":"powerline_on",
+    "u":"powerline_off",
     "G":"guard",
-    "p":"powered",
-    "u":"unpowered",
-    "X":"lockedexit"
+    "X":"lockedexit",
+    "B":"blender",
 }
-NON_WALKABLE = ["wall"]
+NON_WALKABLE = ["wall", "lockedexit"]
 DEADLY = ["water"]
-WINNABLE = ["exit"]
+WINNABLE = ["exit", "unlockedexit"]
 
 IMAGE_MONKEY = pygame.image.load("textures/monkeysprite.png")
 IMAGE_WALL = pygame.image.load("textures/redbrickwall.png")
@@ -38,7 +39,11 @@ IMAGE_BANANA = pygame.image.load("textures/banana.png")
 IMAGE_EXIT = pygame.image.load("textures/red-brick-exit.png")
 IMAGE_LOCKEDEXIT = pygame.image.load("textures/red-brick-locked.png")
 IMAGE_UNLOCKEDEXIT = pygame.image.load("textures/red-brick-unlocked.png")
+IMAGE_BLENDER = pygame.image.load("textures/blender_inactive.png")
+IMAGE_BLENDER_ACTIVE = pygame.image.load("textures/blender_active.png")
 IMAGE_GUARD = pygame.image.load("textures/guardsprite.png")
+IMAGE_POWERLINEOFF = pygame.image.load("textures/powerline_off.png")
+IMAGE_POWELINEON = pygame.image.load("textures/powerline_on.png")
 
 TILE_TEXTURE_MAP = {
     "wall":IMAGE_WALL,
