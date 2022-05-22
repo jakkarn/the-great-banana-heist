@@ -21,6 +21,7 @@ SYMBOL_DICT = {
     "@":"player",
     "p":"powerline_on",
     "u":"powerline_off",
+    "G":"guard",
     "X":"lockedexit"
     "B":"blender"
 }
