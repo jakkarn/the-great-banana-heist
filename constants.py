@@ -31,6 +31,7 @@ IMAGE_FLOOR = pygame.image.load("textures/stone.png")
 IMAGE_BANANAPEEL = pygame.image.load("textures/peel.png")
 IMAGE_BANANA = pygame.image.load("textures/banana.png")
 IMAGE_EXIT = pygame.image.load("textures/red-brick-exit.png")
+IMAGE_GUARD = pygame.image.load("textures/guardsprite.png")
 
 TILE_TEXTURE_MAP = {
     "wall":IMAGE_WALL,
