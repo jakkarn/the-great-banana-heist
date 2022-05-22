@@ -25,7 +25,7 @@ SYMBOL_DICT = {
     "X":"lockedexit",
     "B":"blender",
 }
-NON_WALKABLE = ["wall", "lockedexit"]
+NON_WALKABLE = ["wall", "lockedexit", "blender"]
 DEADLY = ["water"]
 WINNABLE = ["exit", "unlockedexit"]
 
@@ -57,6 +57,9 @@ TILE_TEXTURE_MAP = {
     "banana":IMAGE_BANANA,
     "lockedexit":IMAGE_LOCKEDEXIT,
     "unlockedexit":IMAGE_UNLOCKEDEXIT,
+    "powerline_on":IMAGE_POWELINEON,
+    "powerline_off":IMAGE_POWELINEON,
+    "blender":IMAGE_BLENDER,
 }
 
 PLAYER_MAX_ENERGY = 5
