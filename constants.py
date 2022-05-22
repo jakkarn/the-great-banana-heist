@@ -22,7 +22,7 @@ SYMBOL_DICT = {
     "p":"powerline_on",
     "u":"powerline_off",
     "G":"guard",
-    "X":"lockedexit"
+    "X":"lockedexit",
     "B":"blender"
 }
 NON_WALKABLE = ["wall", "lockedexit"]
