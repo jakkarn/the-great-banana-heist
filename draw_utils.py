@@ -1,5 +1,5 @@
 import pygame
-from constants import TILE_SIZE, TILE_TEXTURE_MAP
+from constants import IMAGE_BANANAPEEL_RED, TILE_SIZE, TILE_TEXTURE_MAP
 from view_port import SCREEN
 
 def to_draw_coordinates(position):
@@ -21,3 +21,9 @@ def draw_font(string, pos):
     my_font = pygame.font.SysFont('Comic Sans MS', 30)
     text_surface = my_font.render(string, False, (255, 255, 255))
     SCREEN.blit(text_surface, (pos[0]*TILE_SIZE, pos[1]*TILE_SIZE))
+
+def draw_death(position):
+    draw_image(IMAGE_BANANAPEEL_RED, (position[0]-1, position[1]))
+    draw_image(IMAGE_BANANAPEEL_RED, (position[0]+1, position[1]))
+    draw_image(IMAGE_BANANAPEEL_RED, (position[0], position[1]+1))
+    draw_image(IMAGE_BANANAPEEL_RED, (position[0], position[1]-1))

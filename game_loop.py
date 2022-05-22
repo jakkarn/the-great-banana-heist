@@ -1,19 +1,26 @@
 import pygame
+from yaml import load
 from constants import SCREEN_BACKGROUND_COLOR
 from game_data import GameData
+from level_loader import load_level
+from player import Player
 from view_port import SCREEN
 
 class GameLoop():
-    def __init__(self, grid):
+    def __init__(self):
         self.running = True
-        self.entities = []
-        self.grid = grid
+        self.current_level = 1
+        self.reload_level()
         pygame.font.init() # you have to call this at the start
 
     def add_entity(self, entity):
         self.entities += [entity]
 
     def update(self):
+
+        if self.no_player():
+            self.reload_level()
+
         game_data = GameData()
         game_data.events = pygame.event.get()
         game_data.grid = self.grid
@@ -50,3 +57,17 @@ class GameLoop():
                 entity.draw()
 
         pygame.display.flip()
+
+    def no_player(self):
+        for entity in self.entities:
+            if isinstance(entity, Player):
+                return False
+
+        return True
+
+    def reload_level(self):
+        self.grid, self.entities = load_level(self.current_level)
+
+    def load_next_level(self):
+        self.current_level += 1
+        self.grid, self.entities = load_level(self.current_level)

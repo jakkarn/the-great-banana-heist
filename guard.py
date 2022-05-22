@@ -1,6 +1,6 @@
 from entity import Entity
 from constants import IMAGE_GUARD
-from draw_utils import draw_image
+from draw_utils import draw_death, draw_image
 from timer import Timer
 
 class Guard(Entity):
@@ -12,6 +12,8 @@ class Guard(Entity):
         self.move_pattern = move_pattern
         self.index_in_move_pattern = 0
         self.move_timer = Timer(0)
+        self.death_timer = Timer(0)
+        self.death_started = False
 
     def find_next_poition(self):
         """calculate the guards next pos based on its move_pattern, index and pos"""
@@ -44,10 +46,17 @@ class Guard(Entity):
 
     def draw(self):
         """draw the guard"""
-        draw_image(IMAGE_GUARD, self.position)
+        if (not self.alive):
+            draw_death(self.position)
+        else:
+            draw_image(IMAGE_GUARD, self.position)
 
     def update(self, game_data):
         super().update(game_data)
+
+        if not self.alive:
+            self.death(game_data)
+            return
 
         walked = False
 
@@ -56,3 +65,14 @@ class Guard(Entity):
 
         if walked:
             self.move_timer = Timer(0.25)
+
+    def death(self, game_data):
+        if not self.death_started:
+            self.death_started = True
+            self.death_timer = Timer(0.5)
+            return
+
+        if self.death_timer:
+            return
+
+        game_data.remove_entity(self)

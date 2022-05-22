@@ -44,6 +44,7 @@ IMAGE_BLENDER_ACTIVE = pygame.image.load("textures/blender_active.png")
 IMAGE_GUARD = pygame.image.load("textures/guardsprite.png")
 IMAGE_POWERLINEOFF = pygame.image.load("textures/powerline_off.png")
 IMAGE_POWELINEON = pygame.image.load("textures/powerline_on.png")
+IMAGE_BANANAPEEL_RED = pygame.image.load("textures/red_peel.png")
 
 TILE_TEXTURE_MAP = {
     "wall":IMAGE_WALL,
