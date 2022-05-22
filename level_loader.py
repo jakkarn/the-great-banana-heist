@@ -4,6 +4,7 @@ from constants import SYMBOL_DICT
 from grid import Array
 from guard import Guard
 from player import Player
+from os.path import exists
 
 
 def load_level(number):
@@ -11,6 +12,9 @@ def load_level(number):
 
     guard_pattern_list = []
     guard_index = 0
+
+    if not exists(path):
+        return None, None
 
     rows = []
     with open(path) as file:

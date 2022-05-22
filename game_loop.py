@@ -1,5 +1,6 @@
 import pygame
-from constants import SCREEN_BACKGROUND_COLOR
+from constants import IMAGE_BANANA, SCREEN_BACKGROUND_COLOR
+from draw_utils import draw_font, draw_image
 from game_data import GameData
 from level_loader import load_level
 from player import Player
@@ -9,9 +10,10 @@ class GameLoop():
     def __init__(self):
         self.running = True
         self.current_level = 1
-        self.reload_level()
         self.has_won = False
+        self.win_screen = False
         pygame.font.init() # you have to call this at the start
+        self.reload_level()
 
     def add_entity(self, entity):
         self.entities += [entity]
@@ -24,12 +26,9 @@ class GameLoop():
         if self.has_won:
             self.load_next_level()
 
-        game_data = GameData()
-        game_data.events = pygame.event.get()
-        game_data.grid = self.grid
-        game_data.entities = self.entities
+        events = pygame.event.get()
 
-        for event in game_data.events:
+        for event in events:
             if event.type == pygame.QUIT:
                 self.running = False
             if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
@@ -37,6 +36,15 @@ class GameLoop():
 
         if not self.running:
             return False
+
+        if self.win_screen:
+            self.draw_win_screen()
+            return True
+
+        game_data = GameData()
+        game_data.events = events
+        game_data.grid = self.grid
+        game_data.entities = self.entities
 
         self.update_entities(game_data)
         self.grid.update(game_data)
@@ -63,7 +71,20 @@ class GameLoop():
 
         pygame.display.flip()
 
+    def draw_win_screen(self):
+
+        SCREEN.fill(SCREEN_BACKGROUND_COLOR)
+        draw_font("No more levels T.T", (3,2))
+        draw_font("YOU WIN", (3.5,4))
+        draw_image(IMAGE_BANANA, (2.25, 3.75))
+        draw_image(IMAGE_BANANA, (6, 3.75))
+        draw_font("Why not add more levels in levels directory?", (1,6))
+        pygame.display.flip()
+
     def no_player(self):
+        if not self.entities:
+            return True
+
         for entity in self.entities:
             if isinstance(entity, Player):
                 return False
@@ -71,8 +92,20 @@ class GameLoop():
         return True
 
     def reload_level(self):
+        if self.win_screen:
+            return
+
         self.grid, self.entities = load_level(self.current_level)
 
+        if self.grid == None:
+            self.win_screen = True
+
     def load_next_level(self):
+        if self.win_screen:
+            return
+
         self.current_level += 1
         self.grid, self.entities = load_level(self.current_level)
+
+        if self.grid == None:
+            self.win_screen = True
