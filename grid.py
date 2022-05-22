@@ -64,7 +64,7 @@ class Array(object):
         tile_type = self.tile_inst_dict[new_position].tile_type
 
         if tile_type in DEADLY:
-            return False
+            return True
         return False
 
     def draw(self):
