@@ -19,8 +19,8 @@ SYMBOL_DICT = {
     "E":"exit",
     "$":"banana",
     "@":"player",
-    "p":"powered"
-    "u":"unpowered"
+    "p":"powered",
+    "u":"unpowered",
     "X":"lockedexit"
 }
 NON_WALKABLE = ["wall"]
