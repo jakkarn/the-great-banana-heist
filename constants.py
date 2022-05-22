@@ -25,7 +25,7 @@ SYMBOL_DICT = {
     "X":"lockedexit",
     "B":"blender",
 }
-NON_WALKABLE = ["wall", "lockedexit"]
+NON_WALKABLE = ["wall", "lockedexit", "blender"]
 DEADLY = ["water"]
 WINNABLE = ["exit", "unlockedexit"]
 
@@ -44,6 +44,7 @@ IMAGE_BLENDER_ACTIVE = pygame.image.load("textures/blender_active.png")
 IMAGE_GUARD = pygame.image.load("textures/guardsprite.png")
 IMAGE_POWERLINEOFF = pygame.image.load("textures/powerline_off.png")
 IMAGE_POWELINEON = pygame.image.load("textures/powerline_on.png")
+IMAGE_BANANAPEEL_RED = pygame.image.load("textures/red_peel.png")
 
 TILE_TEXTURE_MAP = {
     "wall":IMAGE_WALL,
@@ -56,6 +57,9 @@ TILE_TEXTURE_MAP = {
     "banana":IMAGE_BANANA,
     "lockedexit":IMAGE_LOCKEDEXIT,
     "unlockedexit":IMAGE_UNLOCKEDEXIT,
+    "powerline_on":IMAGE_POWELINEON,
+    "powerline_off":IMAGE_POWELINEON,
+    "blender":IMAGE_BLENDER,
 }
 
 PLAYER_MAX_ENERGY = 5

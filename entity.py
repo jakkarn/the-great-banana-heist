@@ -3,19 +3,22 @@ class Entity:
         self.position = position
         self.is_slipping = False
         self.last_direction = (0,0)
+        self.alive = True
 
     def update(self, game_data):
+
+        if not self.alive:
+            return
 
         if self.last_direction == (0,0):
             self.is_slipping = False
 
-        grid = game_data.grid
-        if grid.is_deadly(self.position):
-            print("you_lose")
-            game_data.remove_entity(self)
-
         if self.is_slipping:
             self.move(self.last_direction, game_data)
+
+        grid = game_data.grid
+        if grid.is_deadly(self.position):
+            self.alive = False
 
     def walk(self, direction, game_data):
         if self.is_slipping:
