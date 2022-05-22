@@ -8,7 +8,7 @@ from view_port import SCREEN
 class GameLoop():
     def __init__(self):
         self.running = True
-        self.current_level = 2
+        self.current_level = 1
         self.reload_level()
         self.has_won = False
         pygame.font.init() # you have to call this at the start
