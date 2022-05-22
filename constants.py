@@ -18,7 +18,8 @@ SYMBOL_DICT = {
     "y":"bananapeel",
     "E":"exit",
     "$":"banana",
-    "@":"player"
+    "@":"player",
+    "G": "guard"
 }
 NON_WALKABLE = ["wall"]
 DEADLY = ["water"]

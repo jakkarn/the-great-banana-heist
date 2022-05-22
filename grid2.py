@@ -36,7 +36,8 @@ class Array(object):
             return True
         return False
 
-    def is_safe(self, new_position):
+    def is_deadly(self, new_position):
+        """if water: entity die"""
         if not new_position in self.tile_inst_dict:
             return True
 
