@@ -21,6 +21,7 @@ SYMBOL_DICT = {
     "@":"player"
 }
 NON_WALKABLE = ["wall"]
+DEADLY = ["water"]
 WINNABLE = ["exit"]
 
 IMAGE_MONKEY = pygame.image.load("textures/monkeysprite.png")
