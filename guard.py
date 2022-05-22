@@ -29,10 +29,10 @@ class Guard(Entity):
                 next_position = (self.position[0] - 1, self.position[1])
             elif vector_to_old_pos[1] > 0:
                 next_position = (self.position[0], self.position[1] + 1)
-            elif vector_to_old_pos[1] > 0:
+            elif vector_to_old_pos[1] < 0:
                 next_position = (self.position[0], self.position[1] - 1)
             else:
-                print("Error in Guard.find_next_pos()")
+                print(f"Error in Guard.find_next_pos(): pos == {vector_to_old_pos}")
         return next_position
 
     def find_movement(self):
@@ -40,6 +40,7 @@ class Guard(Entity):
         new_pos = self.find_next_poition()
         x_vec = new_pos[0] - self.position[0]
         y_vec = new_pos[1] - self.position[1]
+        print((x_vec, y_vec))
         return (x_vec, y_vec)
 
     def draw(self):
@@ -47,9 +48,13 @@ class Guard(Entity):
         draw_image(IMAGE_GUARD, self.position)
 
     def update(self, game_data):
+        super().update(game_data)
+
         walked = False
+
         if not self.move_timer:
             walked = self.walk(self.find_movement(),game_data)
+        #self.walk(self.find_movement(),game_data)
 
         if walked:
             self.move_timer = 0.5
