@@ -16,3 +16,8 @@ def draw_tile(pos, tile_type):
 def draw_image(image, pos):
     image = pygame.transform.scale(image, (TILE_SIZE, TILE_SIZE))
     SCREEN.blit(image, (pos[0]*TILE_SIZE, pos[1]*TILE_SIZE))
+
+def draw_font(string, pos):
+    my_font = pygame.font.SysFont('Comic Sans MS', 30)
+    text_surface = my_font.render(string, False, (255, 255, 255))
+    SCREEN.blit(text_surface, (pos[0]*TILE_SIZE, pos[1]*TILE_SIZE))

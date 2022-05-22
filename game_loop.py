@@ -8,6 +8,7 @@ class GameLoop():
         self.running = True
         self.entities = []
         self.grid = grid
+        pygame.font.init() # you have to call this at the start
 
     def add_entity(self, entity):
         self.entities += [entity]
