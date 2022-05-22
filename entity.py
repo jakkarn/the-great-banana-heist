@@ -30,8 +30,13 @@ class Entity:
         self.last_direction = (new_position[0] - self.position[0], new_position[1] - self.position[1])
         self.position = new_position
 
+        banana_peels_to_remove = []
         for banana_peel in game_data.get_banana_peels():
             if banana_peel.position == self.position:
                 self.is_slipping = True
-                game_data.remove_entity(banana_peel)
+                banana_peels_to_remove += [banana_peel]
+
+        for banana_peel in banana_peels_to_remove:
+            game_data.remove_entity(banana_peel)
+
         return True
