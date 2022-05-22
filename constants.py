@@ -40,6 +40,7 @@ TILE_TEXTURE_MAP = {
     "space":IMAGE_FLOOR,
     "dirt":IMAGE_FLOOR,
     "exit":IMAGE_EXIT,
+    "banana":IMAGE_BANANA,
 }
 
 PLAYER_MAX_ENERGY = 5

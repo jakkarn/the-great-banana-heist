@@ -1,3 +1,4 @@
+from banana import Banana
 from banana_peel import BananaPeel
 from constants import SYMBOL_DICT
 from grid2 import Array
@@ -28,6 +29,8 @@ def load_level(filename):
                     player = Player((x,y))
                 if SYMBOL_DICT[col[1]] == "bananapeel":
                     entities += [BananaPeel((x,y))]
+                if SYMBOL_DICT[col[1]] == "banana":
+                    entities += [Banana((x,y))]
 
     # add player first in update order
     if player:

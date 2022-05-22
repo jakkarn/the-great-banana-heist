@@ -1,4 +1,5 @@
 
+from banana import Banana
 from banana_peel import BananaPeel
 
 
@@ -13,6 +14,9 @@ class GameData():
 
     def get_banana_peels(self):
         return [banana_peel for banana_peel in self.entities if isinstance(banana_peel, BananaPeel)]
+
+    def get_bananas(self):
+        return [banana for banana in self.entities if isinstance(banana, Banana)]
 
     def remove_entity(self, entity):
         self.entities.remove(entity)

@@ -15,7 +15,8 @@ class Player(Entity):
         self.check_if_winning(game_data)
         self.eat_banana_action(game_data)
         self.update_movement(game_data)
-        if self.energy <= 0: 
+
+        if self.energy <= 0:
             self.eat_banana(game_data)
 
     def draw(self):
@@ -36,6 +37,15 @@ class Player(Entity):
                     walked = self.walk((0, 1), game_data)
         if walked == True:
             self.energy -= 1
+            self.pick_up_banana(game_data)
+
+    def pick_up_banana(self, game_data):
+        bananas = game_data.get_bananas()
+        bananas_to_pickup = [banana for banana in bananas if banana.position == self.position]
+
+        for banana in bananas_to_pickup:
+            self.banana_count += 1
+            game_data.remove_entity(banana)
 
     def eat_banana_action(self, game_data):
         for event in game_data.events:
