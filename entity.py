@@ -11,6 +11,7 @@ class Entity:
 
         grid = game_data.grid
         if grid.is_deadly(self.position):
+            print("you_lose")
             game_data.remove_entity(self)
 
         if self.is_slipping:

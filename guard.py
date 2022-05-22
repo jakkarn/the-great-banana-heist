@@ -40,7 +40,6 @@ class Guard(Entity):
         new_pos = self.find_next_poition()
         x_vec = new_pos[0] - self.position[0]
         y_vec = new_pos[1] - self.position[1]
-        print((x_vec, y_vec))
         return (x_vec, y_vec)
 
     def draw(self):
