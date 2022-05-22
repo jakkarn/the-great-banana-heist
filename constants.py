@@ -56,6 +56,8 @@ TILE_TEXTURE_MAP = {
     "banana":IMAGE_BANANA,
     "lockedexit":IMAGE_LOCKEDEXIT,
     "unlockedexit":IMAGE_UNLOCKEDEXIT,
+    "powerline_on":IMAGE_POWELINEON,
+    "powerline_off":IMAGE_POWELINEON,
     "blender":IMAGE_BLENDER,
 }
 
