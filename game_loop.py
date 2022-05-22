@@ -28,6 +28,7 @@ class GameLoop():
             return False
 
         self.update_entities(game_data)
+        self.grid.update(game_data)
         self.draw_entities(game_data)
 
         return True
