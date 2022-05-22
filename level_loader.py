@@ -19,7 +19,7 @@ def load_level(number):
             if line[0] != "G":
                 rows += [line.split()]
             else:
-                guard_pattern_list += [eval(line[1:len(line)])]
+                guard_pattern_list += [list(eval(line[1:len(line)]))]
 
     player = None
     entities = []
