@@ -1,7 +1,5 @@
 from game_loop import GameLoop
-from grid2 import Array, convert_text_to_array_list
 from level_loader import load_level
-from player import Player
 
 def run():
 
