@@ -4,7 +4,7 @@ from level_loader import load_level
 from player import Player
 
 def run():
-
+    
     #map_design = "wwwwwwwwwwfw\nwffffffffffw\nwffffffffffw\nwffffffffffw\nwffwwwwwwwww\nwffffffffffw\nwffffffffffw\nwvvvvvwwwffw\nwvvvvvwwwffw\nwffffffffffw\nwffffffffffw\nwwwwwwwwwwww"
     grid, entities = load_level("level1")
     game_loop = GameLoop(grid)

@@ -8,11 +8,17 @@ from player import Player
 def load_level(filename):
     path = "levels/" + filename
 
+    guard_pattern_list = []
+    guard_index = 0
+
     rows = []
     with open(path) as file:
         lines = file.readlines()
         for line in lines:
-            rows += [line.split()]
+            if line[0] != "G":
+                rows += [line.split()]
+            else:
+                guard_pattern_list += [eval(line[1:len(line)])]
 
     player = None
     entities = []
@@ -30,7 +36,8 @@ def load_level(filename):
                 if SYMBOL_DICT[col[1]] == "bananapeel":
                     entities += [BananaPeel((x,y))]
                 if SYMBOL_DICT[col[1]] == "guard":
-                    entities += [Guard((x,y), MOVE_PATTERN)]
+                    entities += [Guard((x,y), guard_pattern_list[guard_index])]
+                    guard_index += 1
 
     # add player first in update order
     if player:
