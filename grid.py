@@ -57,6 +57,7 @@ def print_array(array_inst:Array, x_range:int, y_range:int):
         print(row)
 
 def create_map_interactive():
+    """allows user to write a map_string in the terminal"""
     map_str = ""
     inp = input("Str>>")
     while inp != "q":
@@ -67,12 +68,13 @@ def create_map_interactive():
 
 
 if __name__ == "__main__":
+    """some test-functions"""
     array_list = [[(1,1), "wall"], [(2,1), "wall"], [(3,1), "wall"], [(4,1), "wall"], [(1,2), "dirt"], [(2,2), "grass"]\
         , [(3,2), "grass"], [(4,2), "wall"], [(1,3), "dirt"], [(2,3), "grass"], [(3,3), "water"], [(4,3), "wall"]\
             , [(1,4), "dirt"], [(2,4), "grass"], [(3,4), "grass"], [(4,4), "wall"]]
     text = "wwww\ndggw\ndgvw\ndggw"
     symbol_dict = {"w":"wall", "g":"grass", "d":"dirt", "v":"water", "f":"floor", " ":"space"}
-    text2 = "ddffd\nggffw\nggffw\nvv  w\nvvwww"
+    text2 = "ddffd\nggffw\nggffw\nvv  w\nvvwww" 
 
     test_text1 = "wwwwwwfwww\nwffffffffw\nwfwwfffvfw\nwffffwwffw\nwffwfwfffw\nwffwfwfvfw\nwfvffffffw\nwfvfwwwffw\nwffffffffw\nwwwwwwwwww"
     lvl1 = "wwwwwwwwwwfw\nwffffffffffw\nwffffffffffw\nwffffffffffw\nwffwwwwwwwww\nwffffffffffw\nwffffffffffw\nwvvvvvwwwffw\nwvvvvvwwwffw\nwffffffffffw\nwffffffffffw\nwwwwwwwwwwww"
