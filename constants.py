@@ -18,9 +18,14 @@ SYMBOL_DICT = {
     "y":"bananapeel",
     "E":"exit",
     "$":"banana",
-    "@":"player"
+    "@":"player",
+    "G":"guard",
+    "p":"powered",
+    "u":"unpowered",
+    "X":"lockedexit"
 }
 NON_WALKABLE = ["wall"]
+DEADLY = ["water"]
 WINNABLE = ["exit"]
 
 IMAGE_MONKEY = pygame.image.load("textures/monkeysprite.png")
@@ -31,6 +36,8 @@ IMAGE_FLOOR = pygame.image.load("textures/stone.png")
 IMAGE_BANANAPEEL = pygame.image.load("textures/peel.png")
 IMAGE_BANANA = pygame.image.load("textures/banana.png")
 IMAGE_EXIT = pygame.image.load("textures/red-brick-exit.png")
+IMAGE_LOCKEDEXIT = pygame.image.load("textures/red-brick-locked.png")
+IMAGE_UNLOCKEDEXIT = pygame.image.load("textures/red-brick-unlocked.png")
 IMAGE_GUARD = pygame.image.load("textures/guardsprite.png")
 
 TILE_TEXTURE_MAP = {
@@ -42,6 +49,8 @@ TILE_TEXTURE_MAP = {
     "dirt":IMAGE_FLOOR,
     "exit":IMAGE_EXIT,
     "banana":IMAGE_BANANA,
+    "lockedexit":IMAGE_LOCKEDEXIT,
+    "unlockedexit":IMAGE_UNLOCKEDEXIT,
 }
 
 PLAYER_MAX_ENERGY = 5

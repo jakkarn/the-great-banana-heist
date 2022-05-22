@@ -1,7 +1,8 @@
 from banana import Banana
 from banana_peel import BananaPeel
 from constants import SYMBOL_DICT
-from grid2 import Array
+from grid import Array
+from guard import Guard
 from player import Player
 
 
@@ -17,7 +18,7 @@ def load_level(filename):
     player = None
     entities = []
     tiles = []
-
+    MOVE_PATTERN = [(2,1), (2,2), (2,3), (2,2)]
     #   . .g
     for y, row in enumerate(rows):
         for x, col in enumerate(row):
@@ -31,6 +32,8 @@ def load_level(filename):
                     entities += [BananaPeel((x,y))]
                 if SYMBOL_DICT[col[1]] == "banana":
                     entities += [Banana((x,y))]
+                if SYMBOL_DICT[col[1]] == "guard":
+                    entities += [Guard((x,y), MOVE_PATTERN)]
 
     # add player first in update order
     if player:

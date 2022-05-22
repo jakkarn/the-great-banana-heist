@@ -9,6 +9,10 @@ class Entity:
         if self.last_direction == (0,0):
             self.is_slipping = False
 
+        grid = game_data.grid
+        if grid.is_deadly(self.position):
+            game_data.remove_entity(self)
+
         if self.is_slipping:
             self.move(self.last_direction, game_data)
 

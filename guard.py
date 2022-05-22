@@ -13,6 +13,7 @@ class Guard(Entity):
 
     def find_next_poition(self):
         """calculate the guards next pos based on its move_pattern, index and pos"""
+        next_position = self.position
         if self.position == self.move_pattern[self.index_in_move_pattern]:
             index = (self.index_in_move_pattern + 1)%len(self.move_pattern)
             next_position = self.move_pattern[index]
@@ -22,7 +23,7 @@ class Guard(Entity):
                 , self.move_pattern[self.index_in_move_pattern][1] - self.position[1])
             if vector_to_old_pos[0] > 0:
                 next_position = (self.position[0] + 1, self.position[1])
-            elif vector_to_old_pos < 0:
+            elif vector_to_old_pos[0] < 0:
                 next_position = (self.position[0] - 1, self.position[1])
             elif vector_to_old_pos[1] > 0:
                 next_position = (self.position[0], self.position[1] + 1)
@@ -42,4 +43,7 @@ class Guard(Entity):
     def draw(self):
         """draw the guard"""
         draw_image(IMAGE_GUARD, self.position)
+
+    def update(self, game_data):
+        self.walk(self.find_movement(),game_data)
 

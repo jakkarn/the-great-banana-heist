@@ -1,7 +1,7 @@
 
 import sys
 
-from constants import NON_WALKABLE, SYMBOL_DICT, WINNABLE
+from constants import NON_WALKABLE, SYMBOL_DICT, WINNABLE, DEADLY
 from draw_utils import draw_tile
 
 class Array(object):
@@ -34,6 +34,17 @@ class Array(object):
         tile_type = self.tile_inst_dict[new_position].tile_type
         if tile_type in WINNABLE:
             return True
+        return False
+
+    def is_deadly(self, new_position):
+        """if water: entity die"""
+        if not new_position in self.tile_inst_dict:
+            return True
+
+        tile_type = self.tile_inst_dict[new_position].tile_type
+
+        if tile_type in DEADLY:
+            return False
         return False
 
     def draw(self):
