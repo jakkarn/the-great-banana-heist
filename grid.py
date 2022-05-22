@@ -7,6 +7,7 @@ class Array(object):
 
     def __init__(self, tile_list:list):
         # tile_list == [[coordinate, tile_type] ... ]
+        print("init grid")
         self.tile_inst_dict = {}
         for tile in tile_list:
             pos = tile[0]

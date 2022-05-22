@@ -1,6 +1,7 @@
 from entity import Entity
 from constants import IMAGE_GUARD
 from draw_utils import draw_image
+from timer import Timer
 
 class Guard(Entity):
     """Guard is an Entity representing a guard"""
@@ -10,6 +11,7 @@ class Guard(Entity):
         self.last_direction = (0,0)
         self.move_pattern = move_pattern
         self.index_in_move_pattern = 0
+        self.move_timer = Timer(0)
 
     def find_next_poition(self):
         """calculate the guards next pos based on its move_pattern, index and pos"""
@@ -45,5 +47,9 @@ class Guard(Entity):
         draw_image(IMAGE_GUARD, self.position)
 
     def update(self, game_data):
-        self.walk(self.find_movement(),game_data)
+        walked = False
+        if not self.move_timer:
+            walked = self.walk(self.find_movement(),game_data)
 
+        if walked:
+            self.move_timer = 0.5
