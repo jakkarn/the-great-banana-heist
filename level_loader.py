@@ -6,8 +6,8 @@ from guard import Guard
 from player import Player
 
 
-def load_level(filename):
-    path = "levels/" + filename
+def load_level(number):
+    path = "levels/level" + str(number)
 
     guard_pattern_list = []
     guard_index = 0
@@ -24,8 +24,7 @@ def load_level(filename):
     player = None
     entities = []
     tiles = []
-    MOVE_PATTERN = [(2,1), (2,2), (2,3), (2,2)]
-    #   . .g
+
     for y, row in enumerate(rows):
         for x, col in enumerate(row):
 
