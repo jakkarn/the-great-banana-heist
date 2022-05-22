@@ -10,6 +10,7 @@ class GameLoop():
         self.running = True
         self.current_level = 1
         self.reload_level()
+        self.has_won = False
         pygame.font.init() # you have to call this at the start
 
     def add_entity(self, entity):
@@ -19,6 +20,9 @@ class GameLoop():
 
         if self.no_player():
             self.reload_level()
+
+        if self.has_won:
+            self.load_next_level()
 
         game_data = GameData()
         game_data.events = pygame.event.get()
@@ -37,6 +41,8 @@ class GameLoop():
         self.update_entities(game_data)
         self.grid.update(game_data)
         self.draw_entities(game_data)
+
+        self.has_won = game_data.has_won
 
         return True
 

@@ -79,7 +79,7 @@ class Player(Entity):
 
     def check_if_winning(self, game_data):
         if game_data.grid.is_winningtile(self.position):
-            print("you win!")
+            game_data.has_won = True
 
     def eat_banana(self, game_data):
         self.banana_count -= 1

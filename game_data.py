@@ -8,6 +8,7 @@ class GameData():
         self.events = []
         self.grid = None
         self.entities = []
+        self.has_won = False
 
     def add_entity(self, entity):
         self.entities += [entity]
