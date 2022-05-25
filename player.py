@@ -31,8 +31,10 @@ class Player(Entity):
 
     def draw(self):
         draw_font(f"x {self.banana_count}", (14,1))
-        draw_image(IMAGE_BANANA, (13,1))
+        draw_image(IMAGE_BANANA, (13,0.75))
         draw_font(f"energy: {self.energy}", (13,3))
+        draw_font(f"eat: <space>", (13,5))
+        draw_font(f"move: arrow keys", (13,6))
 
         if not self.alive:
             draw_death(self.position)

@@ -81,9 +81,9 @@ class GameLoop():
 
         SCREEN.fill(SCREEN_BACKGROUND_COLOR)
         draw_font("No more levels T.T", (3,2))
-        draw_font("YOU WIN", (3.5,4))
+        draw_font("YOU WIN", (3.5,1))
+        draw_font(f"score: {self.current_banana_count}", (3.5,4))
         draw_image(IMAGE_BANANA, (2.25, 3.75))
-        draw_image(IMAGE_BANANA, (6, 3.75))
         draw_font("Why not add more levels in levels directory?", (1,6))
         pygame.display.flip()
 
@@ -103,11 +103,11 @@ class GameLoop():
 
         self.grid, self.entities = load_level(self.current_level)
 
-        player = self.get_player()
-        player.banana_count = self.current_banana_count
-
         if self.grid == None:
             self.win_screen = True
+
+        player = self.get_player()
+        player.banana_count = self.current_banana_count
 
     def load_next_level(self):
         if self.win_screen:
@@ -120,12 +120,17 @@ class GameLoop():
         self.grid, self.entities = load_level(self.current_level)
 
         player = self.get_player()
-        player.banana_count = self.current_banana_count
+        if player:
+            player.banana_count = self.current_banana_count
 
         if self.grid == None:
             self.win_screen = True
     
     def get_player(self):
+
+        if not self.entities:
+            return None
+
         player = None
         for entity in self.entities:
             if isinstance(entity, Player):

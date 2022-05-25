@@ -1,5 +1,4 @@
 from game_loop import GameLoop
-from level_loader import load_level
 
 def run():
     game_loop = GameLoop()
