@@ -1,5 +1,5 @@
 import pygame
-from constants import IMAGE_BANANA, SCREEN_BACKGROUND_COLOR
+from constants import IMAGE_BANANA, SCREEN_BACKGROUND_COLOR, START_LEVEL
 from draw_utils import draw_font, draw_image
 from game_data import GameData
 from level_loader import load_level
@@ -9,7 +9,7 @@ from view_port import SCREEN
 class GameLoop():
     def __init__(self):
         self.running = True
-        self.current_level = 1
+        self.current_level = START_LEVEL
         self.has_won = False
         self.win_screen = False
         pygame.font.init() # you have to call this at the start

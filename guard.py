@@ -15,7 +15,7 @@ class Guard(Entity):
         self.death_timer = Timer(0)
         self.death_started = False
 
-    def find_next_poition(self):
+    def find_next_position(self):
         """calculate the guards next pos based on its move_pattern, index and pos"""
         next_position = self.position
         if self.position == self.move_pattern[self.index_in_move_pattern]:
@@ -39,7 +39,7 @@ class Guard(Entity):
 
     def find_movement(self):
         """calculate the guards movement"""
-        new_pos = self.find_next_poition()
+        new_pos = self.find_next_position()
         x_vec = new_pos[0] - self.position[0]
         y_vec = new_pos[1] - self.position[1]
         return (x_vec, y_vec)

@@ -52,7 +52,7 @@ class Player(Entity):
                     walked = self.walk((0, -1), game_data)
                 if event.key == pygame.K_DOWN:
                     walked = self.walk((0, 1), game_data)
-        if walked == True:
+        if walked == True and self.energy > 0:
             self.energy -= 1
 
     def death(self, game_data):
@@ -89,6 +89,10 @@ class Player(Entity):
                 self.alive = False
 
     def eat_banana(self, game_data):
+
+        if self.banana_count <= 0:
+            return
+
         self.banana_count -= 1
         self.energy = PLAYER_MAX_ENERGY
 
