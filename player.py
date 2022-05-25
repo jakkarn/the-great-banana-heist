@@ -31,13 +31,14 @@ class Player(Entity):
 
     def draw(self):
         draw_font(f"x {self.banana_count}", (14,1))
+        draw_image(IMAGE_BANANA, (13,1))
+        draw_font(f"energy: {self.energy}", (13,3))
 
         if not self.alive:
             draw_death(self.position)
             return
 
         draw_image(IMAGE_MONKEY, self.position)
-        draw_image(IMAGE_BANANA, (13,1))
 
     def update_movement(self, game_data):
         walked = False
@@ -52,8 +53,10 @@ class Player(Entity):
                     walked = self.walk((0, -1), game_data)
                 if event.key == pygame.K_DOWN:
                     walked = self.walk((0, 1), game_data)
-        if walked == True and self.energy > 0:
+        if walked and self.energy > 0:
             self.energy -= 1
+        elif walked:
+            self.alive = False
 
     def death(self, game_data):
         if not self.death_started:

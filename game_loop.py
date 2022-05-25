@@ -1,5 +1,5 @@
 import pygame
-from constants import IMAGE_BANANA, SCREEN_BACKGROUND_COLOR, START_LEVEL
+from constants import IMAGE_BANANA, PLAYER_START_BANANA_COUNT, SCREEN_BACKGROUND_COLOR, START_LEVEL
 from draw_utils import draw_font, draw_image
 from game_data import GameData
 from level_loader import load_level
@@ -10,6 +10,7 @@ class GameLoop():
     def __init__(self):
         self.running = True
         self.current_level = START_LEVEL
+        self.current_banana_count = PLAYER_START_BANANA_COUNT
         self.has_won = False
         self.win_screen = False
         pygame.font.init() # you have to call this at the start
@@ -102,6 +103,9 @@ class GameLoop():
 
         self.grid, self.entities = load_level(self.current_level)
 
+        player = self.get_player()
+        player.banana_count = self.current_banana_count
+
         if self.grid == None:
             self.win_screen = True
 
@@ -109,8 +113,22 @@ class GameLoop():
         if self.win_screen:
             return
 
+        player = self.get_player()
+        self.current_banana_count = player.banana_count
         self.current_level += 1
+
         self.grid, self.entities = load_level(self.current_level)
+
+        player = self.get_player()
+        player.banana_count = self.current_banana_count
 
         if self.grid == None:
             self.win_screen = True
+    
+    def get_player(self):
+        player = None
+        for entity in self.entities:
+            if isinstance(entity, Player):
+                player = entity
+        
+        return player

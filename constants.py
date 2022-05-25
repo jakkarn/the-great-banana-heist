@@ -9,8 +9,10 @@ MIDNIGHT_BLACK = (0, 0, 4)
 SCREEN_BACKGROUND_COLOR = MIDNIGHT_BLACK
 
 SYMBOL_DICT = {
+    "?":"void",
     "#":"wall",
     "|":"wall-decal",
+    "-":"wall-decal-2",
     "g":"grass",
     "d":"dirt",
     "~":"water",
@@ -28,13 +30,14 @@ SYMBOL_DICT = {
     "B":"blender",
     "z":"vines",
 }
-NON_WALKABLE = ["wall", "lockedexit", "blender", "trottoar"]
+NON_WALKABLE = ["wall", "lockedexit", "blender", "trottoar", "void"]
 DEADLY = ["water"]
 WINNABLE = ["exit", "unlockedexit"]
 
 IMAGE_MONKEY = pygame.image.load("textures/monkeysprite.png")
 IMAGE_WALL = pygame.image.load("textures/redbrickwall.png")
 IMAGE_WALL_DECAL = pygame.image.load("textures/red-dark-blendx-brickwall.png")
+IMAGE_WALL_DECAL_2 = pygame.image.load("textures/red-dark-blendy-brickwall.png")
 IMAGE_GRASS = pygame.image.load("textures/vines-brickwalldarker.png")
 IMAGE_WATER = pygame.image.load("textures/water.gif")
 IMAGE_FLOOR = pygame.image.load("textures/stone.png")
@@ -55,6 +58,7 @@ IMAGE_VINES = pygame.image.load("textures/vines.png")
 TILE_TEXTURE_MAP = {
     "wall":IMAGE_WALL,
     "wall-decal":IMAGE_WALL_DECAL,
+    "wall-decal-2":IMAGE_WALL_DECAL_2,
     "floor":IMAGE_FLOOR,
     "grass":IMAGE_GRASS,
     "water":IMAGE_WATER,
@@ -72,5 +76,5 @@ TILE_TEXTURE_MAP = {
 }
 
 PLAYER_MAX_ENERGY = 5
-PLAYER_START_BANANA_COUNT = 1
-START_LEVEL = 9
+PLAYER_START_BANANA_COUNT = 30
+START_LEVEL = 1

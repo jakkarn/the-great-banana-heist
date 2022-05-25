@@ -9,6 +9,10 @@ def draw_circle(color, position, radius):
     pygame.draw.circle(SCREEN, color, to_draw_coordinates(position), radius)
 
 def draw_tile(pos, tile_type):
+
+    if not tile_type in TILE_TEXTURE_MAP:
+        return
+
     image = TILE_TEXTURE_MAP[tile_type]
     draw_pos = (pos[0], pos[1])
     draw_image(image, draw_pos)
