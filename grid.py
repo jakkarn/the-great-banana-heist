@@ -35,14 +35,19 @@ class Array(object):
             self.lockedexit.update(game_data)
 
 
-    def is_walkable(self, new_position):
+    def is_walkable(self, new_position, current_position):
 
         if not new_position in self.tile_inst_dict:
             return False
 
-        tile_type = self.tile_inst_dict[new_position].tile_type
+        
+        current_tile_type = self.tile_inst_dict[current_position].tile_type
+        new_tile_type = self.tile_inst_dict[new_position].tile_type
 
-        if tile_type in NON_WALKABLE:
+        if current_tile_type == new_tile_type:
+            return True
+
+        if new_tile_type in NON_WALKABLE and not current_tile_type in NON_WALKABLE:
             return False
 
         # TODO: if guard or other cases

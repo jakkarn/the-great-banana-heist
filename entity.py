@@ -31,7 +31,7 @@ class Entity:
 
         new_position = (self.position[0] + movement[0], self.position[1] + movement[1])
 
-        if not grid.is_walkable(new_position):
+        if not grid.is_walkable(new_position, self.position):
             self.last_direction = (0,0)
             return False
 

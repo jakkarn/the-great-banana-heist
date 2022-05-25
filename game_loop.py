@@ -62,12 +62,17 @@ class GameLoop():
     def draw_entities(self, game_data):
 
         SCREEN.fill(SCREEN_BACKGROUND_COLOR)
-
         game_data.grid.draw()
+        player = None
 
         for entity in self.entities:
+            if isinstance(entity, Player):
+                player = entity
             if hasattr(entity, "draw"):
                 entity.draw()
+        
+        if player:
+            player.draw()
 
         pygame.display.flip()
 

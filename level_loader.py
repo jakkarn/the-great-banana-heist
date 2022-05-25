@@ -1,11 +1,13 @@
+import random
 from banana import Banana
 from banana_peel import BananaPeel
-from constants import SYMBOL_DICT
+from constants import SYMBOL_DICT, TILE_TEXTURE_MAP
 from grid import Array
 from guard import Guard
 from player import Player
 from os.path import exists
 
+from drawable import Drawable
 
 def load_level(number):
     path = "levels/level" + str(number)
@@ -34,16 +36,23 @@ def load_level(number):
 
             tiles.append([(x, y), SYMBOL_DICT[col[0]]])
 
-            if len(col) == 2:
-                if SYMBOL_DICT[col[1]] == "player":
+            for i in range(1, len(col)):
+                symbol = SYMBOL_DICT[col[i]]
+                if symbol == "player":
                     player = Player((x,y))
-                if SYMBOL_DICT[col[1]] == "bananapeel":
+                elif symbol == "bananapeel":
                     entities += [BananaPeel((x,y))]
-                if SYMBOL_DICT[col[1]] == "banana":
+                elif symbol == "banana":
                     entities += [Banana((x,y))]
-                if SYMBOL_DICT[col[1]] == "guard":
+                elif symbol == "guard":
                     entities += [Guard((x,y), guard_pattern_list[guard_index])]
                     guard_index += 1
+                elif symbol == "vines":
+                    image = TILE_TEXTURE_MAP[symbol]
+                    entities += [Drawable(image, (x,y), random.choice([0, 90, -90, 180]))]
+                elif symbol in TILE_TEXTURE_MAP:
+                    image = TILE_TEXTURE_MAP[symbol]
+                    entities += [Drawable(image, (x,y))]
 
     # add player first in update order
     if player:

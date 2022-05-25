@@ -13,8 +13,9 @@ def draw_tile(pos, tile_type):
     draw_pos = (pos[0], pos[1])
     draw_image(image, draw_pos)
 
-def draw_image(image, pos):
+def draw_image(image, pos, angle = 0):
     image = pygame.transform.scale(image, (TILE_SIZE, TILE_SIZE))
+    image = pygame.transform.rotate(image, angle)
     SCREEN.blit(image, (pos[0]*TILE_SIZE, pos[1]*TILE_SIZE))
 
 def draw_font(string, pos):

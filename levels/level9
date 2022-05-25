@@ -1,10 +1,13 @@
-g  g  g  g  g  g  g  g  g  g  g
-g  g  g  g  g  g  g  g  g  g  g
-g  g  g  g  g  g  g  g  g  g  g
-g  g  g  #  #  #  #  #  g  g  g
-g  g  g #@  .  .  .G E  g  g  g
-g  g  g  #  #  #  #  #  g  g  g
-g  g  g  g  g  g  g  g  g  g  g
-g  g  g  g  g  g  g  g  g  g  g
-g  g  g  g  g  g  g  g  g  g  g
-G[(6, 4)]
+~  .#z #  #  #  #|  ~
+~  #z  #  #  #  #|  ~
+.  #z@ #G #  E  #   .
+=  =   =  =G =  =G  =
+=  =   =  =  =G =   =
+.  .   .  .  .  .$  .G
+.  .   .  .  .  .   . 
+.  .   .  .  .  .   . 
+G[(2, 2)]
+G[(3, 3), (3,3), (4,3)]
+G[(5, 3), (4,3), (5,3)]
+G[(4, 4)]
+G[(6, 5)]
