@@ -1,6 +1,6 @@
 import pygame
 from banana_peel import BananaPeel
-from constants import IMAGE_BANANA, IMAGE_MONKEY, PLAYER_BLUE, TILE_SIZE, PLAYER_MAX_ENERGY, PLAYER_START_BANANA_COUNT
+from constants import IMAGE_BANANA, IMAGE_MONKEY, PLAYER_BLUE, SOUND_PLAYER_DEATH, SOUND_PLAYER_EAT, SOUND_PLAYER_SLIP, TILE_SIZE, PLAYER_MAX_ENERGY, PLAYER_START_BANANA_COUNT
 from draw_utils import draw_circle, draw_death, draw_font, draw_image
 from entity import Entity
 from guard import Guard
@@ -14,11 +14,18 @@ class Player(Entity):
         self.banana_count = PLAYER_START_BANANA_COUNT
         self.death_timer = Timer(0)
         self.death_started = False
+        self.is_playing_slip_sound = False
 
     def update(self, game_data):
         if not self.alive:
             self.death(game_data)
             return
+        
+        if self.is_slipping:
+            self.play_slip_sound()
+            self.is_playing_slip_sound = True
+        else:
+            self.is_playing_slip_sound = False
 
         self.check_if_winning(game_data)
         self.check_if_guard(game_data)
@@ -64,6 +71,7 @@ class Player(Entity):
         if not self.death_started:
             self.death_started = True
             self.death_timer = Timer(2)
+            pygame.mixer.Sound.play(SOUND_PLAYER_DEATH)
             return
 
         if self.death_timer:
@@ -100,6 +108,7 @@ class Player(Entity):
 
         self.banana_count -= 1
         self.energy = PLAYER_MAX_ENERGY
+        pygame.mixer.Sound.play(SOUND_PLAYER_EAT)
 
         bananas = game_data.get_banana_peels()
         for banana_peel in bananas:
@@ -107,7 +116,10 @@ class Player(Entity):
                 return # TODO: put SUPER BANANA INSTEAD
 
         game_data.entities += [BananaPeel(self.position)]
-    #def banana_action_pressed():
-    #    for event in pygame.event.get():
-    #        if event.key == K_SPACE:
-    #            banana_peels += [Banana_Peel(self.position)]
+    
+    def play_slip_sound(self):
+
+        if self.is_playing_slip_sound:
+            return
+        else:
+            pygame.mixer.Sound.play(SOUND_PLAYER_SLIP)

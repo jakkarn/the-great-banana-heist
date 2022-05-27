@@ -75,6 +75,14 @@ TILE_TEXTURE_MAP = {
     "vines":IMAGE_VINES,
 }
 
+pygame.mixer.init()
+#SOUND_PLAYER_PICKUP_1 = pygame.mixer.Sound("audio/pickup-banana-1.mp3")
+#SOUND_PLAYER_PICKUP_2 = pygame.mixer.Sound("audio/pickup-banana-2.mp3")
+SOUND_PLAYER_DEATH = pygame.mixer.Sound("audio/player-death.mp3")
+SOUND_PLAYER_EAT = pygame.mixer.Sound("audio/player-eat.mp3")
+SOUND_PLAYER_SLIP = pygame.mixer.Sound("audio/player-slip.mp3")
+SOUND_GUARD_SLIP = pygame.mixer.Sound("audio/guard-slip.mp3")
+
 PLAYER_MAX_ENERGY = 5
 PLAYER_START_BANANA_COUNT = 30
-START_LEVEL = 9
+START_LEVEL = 1

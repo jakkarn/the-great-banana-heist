@@ -1,5 +1,6 @@
+import pygame
 from entity import Entity
-from constants import IMAGE_GUARD
+from constants import IMAGE_GUARD, SOUND_GUARD_SLIP
 from draw_utils import draw_death, draw_image
 from timer import Timer
 
@@ -58,6 +59,12 @@ class Guard(Entity):
             self.death(game_data)
             return
 
+        if self.is_slipping:
+            self.play_slip_sound()
+            self.is_playing_slip_sound = True
+        else:
+            self.is_playing_slip_sound = False
+
         walked = False
 
         if not self.move_timer:
@@ -76,3 +83,10 @@ class Guard(Entity):
             return
 
         game_data.remove_entity(self)
+
+    def play_slip_sound(self):
+
+        if self.is_playing_slip_sound:
+            return
+        else:
+            pygame.mixer.Sound.play(SOUND_GUARD_SLIP)
